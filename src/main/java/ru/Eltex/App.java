@@ -1,0 +1,7 @@
+package ru.Eltex;
+
+public class App {
+	public static void main(String[] args) {
+		System.out.println("Hello");
+	}
+}
