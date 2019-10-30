@@ -12,5 +12,5 @@ dependencies {
 
 run {
     standardInput = System.in
-    mainClassName = "ru.Eltex.App"
+    mainClassName = "Lab2_Jackson/App"
 }
