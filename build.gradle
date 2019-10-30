@@ -1,6 +1,14 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'idea'
 
+repositories {
+    jcenter();
+}
+
+dependencies {
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
+}
 
 run {
     standardInput = System.in

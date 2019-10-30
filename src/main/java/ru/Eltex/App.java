@@ -1,11 +1,11 @@
 package ru.Eltex;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class App {
 
 	public static void main(String[] args)
 	{
-		Student student = new Student();
-		student.fromCSV("CSV.csv");
-
+		ObjectMapper mapper = new ObjectMapper();
 	}
 }

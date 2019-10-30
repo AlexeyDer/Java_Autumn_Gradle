@@ -3,3 +3,7 @@
 gradle
 gradlew
 gradlew.bat
+Java_Autumn_Gradle.iml
+.*
+bin
+build/*
