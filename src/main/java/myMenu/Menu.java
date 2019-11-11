@@ -48,23 +48,4 @@ public class Menu implements InterfaceMenu {
         this.menuIndex = menuIndex;
     }
 
-//    @Override
-//    public void keyTyped(KeyEvent keyEvent) {
-//
-//    }
-//
-//    @Override
-//    public void keyPressed(KeyEvent keyEvent) {
-//        if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-//            menuIndex--;
-//        }
-//        if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-//            menuIndex++;
-//        }
-//    }
-//
-//    @Override
-//    public void keyReleased(KeyEvent keyEvent) {
-//
-//    }
 }
