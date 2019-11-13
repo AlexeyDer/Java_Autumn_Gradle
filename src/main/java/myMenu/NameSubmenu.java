@@ -5,7 +5,6 @@ import java.util.*;
 public class NameSubmenu extends Menu {
     private List<String> names;
 
-
     public NameSubmenu(int amountItems ) {
         Scanner sc = new Scanner(System.in);
         this.names = new ArrayList<>();
