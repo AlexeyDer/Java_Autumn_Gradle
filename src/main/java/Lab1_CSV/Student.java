@@ -1,4 +1,4 @@
-package ru.Eltex;
+package Lab1_CSV;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -6,11 +6,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Teacher extends User {
+public class Student extends User implements CSV {
 
-    public Teacher(int id, String fio, String phone) {
-        super(id, fio, phone);
-    }
+	public Student(int id, String fio, String phone) {
+		super(id, fio, phone);
+	}
+
+	public void fromCSV() {
+
+	}
 
     public String toCSV(List<User> users) {
         try {
@@ -28,23 +32,24 @@ public class Teacher extends User {
         return "writeCSV.csv";
     }
 
-    public List<User> fromCSV(String str, List<User> users) {
-        try {
-            FileReader fr = new FileReader(str);
-            Scanner in = new Scanner(fr).useDelimiter(",|\n");
+	@Override
+	public List<User> fromCSV(String str, List<User> users) {
+		try {
+			FileReader fr = new FileReader(str);
+			Scanner in = new Scanner(fr).useDelimiter(",|\n");
 
-            while (in.hasNextLine()) {
-                setId(in.nextInt());
+			while (in.hasNextLine()) {
+				setId(in.nextInt());
                 setFio(in.next());
                 setPhone(in.next());
 
                 users.add(new User(getId(), getFio(), getPhone()));
-            }
-            fr.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return users;
-    }
-
+			}
+			fr.close();
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		return users;
+	}
 }
+

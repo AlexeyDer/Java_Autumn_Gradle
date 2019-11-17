@@ -1,9 +1,6 @@
-package ru.Eltex;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package Lab1_CSV;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class App{

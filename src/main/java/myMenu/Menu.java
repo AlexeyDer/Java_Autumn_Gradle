@@ -16,19 +16,13 @@ public class Menu implements InterfaceMenu {
         this.menuIndex = 0;
     }
 
-
     public static void main(String[] args) throws IOException {
-
-     //   System.out.println("Создать свое меню или выбрать уже готовое? ");
-
         Menu mainMenu = new Menu();
-      //  Scanner sc = new Scanner(System.in);
-
 
         while (true) {
-            mainMenu.printMenu(mainMenu, menuSize);
+            mainMenu.printMenu(mainMenu, templateMenu, menuSize);
             Button button = new Button(System.in.read());
-            button.press(mainMenu);
+            button.pressMainMenu(mainMenu);
         }
     }
 

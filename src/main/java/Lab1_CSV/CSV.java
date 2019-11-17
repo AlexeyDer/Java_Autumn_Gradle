@@ -1,4 +1,4 @@
-package ru.Eltex;
+package Lab1_CSV;
 
 import java.util.List;
 
