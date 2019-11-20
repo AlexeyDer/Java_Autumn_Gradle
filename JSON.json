@@ -1,15 +1,14 @@
 {
-	"id": 1,
-	"fio": "Ivan",
-	"lessons":
-	[
-		{
-			"id" : 1,
-			"title": "tmo"
-		},
-		{
-			"id": 2,
-			"title": "math"
-		}
-	]
+  "id": 1,
+  "fio": "Ivan",
+  "lessons": [
+    {
+      "id": 1,
+      "les": "tmo"
+    },
+    {
+      "id": 2,
+      "les": "math"
+    }
+  ]
 }
