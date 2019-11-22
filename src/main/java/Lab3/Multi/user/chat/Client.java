@@ -13,7 +13,8 @@ public class Client {
         System.out.println("Введите ваше имя");
         String user = sc.nextLine();
 
-        clientSocket = new Socket("localhost", 4004);
+        clientSocket = new Socket("localhost", 19000);
+
         try {
             InputStream inStream = clientSocket.getInputStream();
             OutputStream outStream = clientSocket.getOutputStream();
