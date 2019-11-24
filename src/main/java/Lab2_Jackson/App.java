@@ -7,6 +7,5 @@ public class App {
         us.toJSON();
         us.fromJSON("JSON.json");
 
-
     }
 }

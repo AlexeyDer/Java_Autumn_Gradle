@@ -4,39 +4,46 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class MyTread implements Runnable {
+public class MyTread extends Thread{
     private Socket clientDialog;
+    private InputStream inStream;
+    private OutputStream outStream;
+    private Scanner in;
+    private PrintWriter out;
 
-    public MyTread(Socket client) {
-        this.clientDialog = clientDialog;
+    public MyTread(Socket client) throws IOException {
+        this.clientDialog = client;
+
+        inStream = client.getInputStream();
+        outStream =client.getOutputStream();
+        in = new Scanner(inStream);
+        out = new PrintWriter(outStream);
+        start();
     }
 
     @Override
     public void run() {
-
+        String word;
         try {
-            OutputStream outStream = clientDialog.getOutputStream();
-            InputStream inStream = clientDialog.getInputStream();
-
-
-            Scanner in = new Scanner(inStream);
-            PrintWriter out = new PrintWriter(outStream);
 
             while (!clientDialog.isClosed()) {
-                String entry = in.nextLine();
-                System.out.println("READ from clientDialog message - " + entry);
 
-                if (entry.equalsIgnoreCase("quit")) {
+                word = in.nextLine();
+                Server.hist.getStorage().add(word);
+                System.out.println(word);
+
+
+                if (word.equalsIgnoreCase("quit")) {
                     System.out.println("Client initialize connections suicide ...");
-                    out.write("Server reply: " + entry + " - OK");
+                    out.write("Server reply: " + word + " - OK");
                     Thread.sleep(3000);
                     break;
                 }
 
-                System.out.println("Server try writing  to channal");
-                out.write("Server reply - " + entry + " - OK");
-                System.out.println("Server Wrote message to clientDialog.");
-                out.flush();
+                for (MyTread vr: Server.serverList) {
+                    vr.send(word);
+                }
+
             }
 
             System.out.println("Client disconnected");
@@ -53,5 +60,14 @@ public class MyTread implements Runnable {
         }
     }
 
+    private void send(String word) {
+        try {
+            out.write(word + "\n");
+            out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
+

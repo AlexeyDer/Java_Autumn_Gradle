@@ -1,47 +1,38 @@
 package Lab3.Multi.user.chat;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.Buffer;
-import java.util.Scanner;
+import java.util.LinkedList;
 
 public class Server {
 
     private static Socket clientSocket;
+    public static History hist = new History();
+    public static int PORT = 19000;
+    public static LinkedList<MyTread> serverList = new LinkedList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        ServerSocket server = new ServerSocket(PORT);
+        System.out.println("Сервер запущен!");
+
         try {
-            ServerSocket server = new ServerSocket(19000);
-            System.out.println("Сервер запущен!");
-
-            Socket client = server.accept();
-
-            System.out.print("Connection accepted.");
-
-
-            InputStream inStream = client.getInputStream();
-            OutputStream outStream = client.getOutputStream();
-
-            Scanner sc = new Scanner(inStream);
-            PrintWriter out = new PrintWriter(outStream);
-
             while (true) {
-                System.out.println("Ждем пока клиент что-то напишет...");
-                String word = sc.nextLine();
-                if ("q" == word) {
-                    System.out.println("Клиент закрыт");
-                    client.close();
-                    System.exit(0);
-                }
-                System.out.println(word);
+                Socket client = server.accept();
 
-                out.write("Привет, брат! Подтверждаю, вы написали : " + word + "\n");
-                out.flush();
+                try {
+                    serverList.add(new MyTread(client));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    client.close();
+                }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            server.close();
         }
 
     }

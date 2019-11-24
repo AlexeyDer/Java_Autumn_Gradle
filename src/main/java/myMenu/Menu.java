@@ -22,6 +22,7 @@ public class Menu implements InterfaceMenu {
         while (true) {
             mainMenu.printMenu(mainMenu, templateMenu, menuSize);
             Button button = new Button(System.in.read());
+            System.in.read();
             button.pressMainMenu(mainMenu);
         }
     }

@@ -7,11 +7,9 @@ interface InterfaceMenu {
     +printMenu(menu: Menu, size: int)
 }
 
- Menu <-- InterfaceMenu
+ InterfaceMenu <.. Menu
 
-'Menu <|-- NameSubmenu
-Button <|-- Menu
-'Menu <|-- Settings
+Menu <|--Button
 
 class Menu {
     -menuIndex: int
