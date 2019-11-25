@@ -7,8 +7,7 @@ public class App {
 
     public static void main(String[] args) {
         try {
-       //     Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/univ",
+            Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/",
                     "root", "sport1337");
 
             Statement stmt = conn.createStatement();
