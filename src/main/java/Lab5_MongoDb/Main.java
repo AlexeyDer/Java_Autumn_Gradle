@@ -29,6 +29,6 @@ public class Main {
             System.out.println(cur.get("age"));
         }
         System.out.println("-------------------------------------");
-        
+
     }
 }
