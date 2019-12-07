@@ -11,6 +11,7 @@ public class User implements CSV {
     protected String fio;
     protected String phone;
 
+
     public User() {
         this.id = 0;
         this.fio = null;

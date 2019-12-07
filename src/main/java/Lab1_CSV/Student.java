@@ -7,13 +7,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Student extends User implements CSV {
+	private int kurs;
+
+	public int getKurs() {
+		return kurs;
+	}
+
+	public void setKurs(int kurs) {
+		this.kurs = kurs;
+	}
 
 	public Student(int id, String fio, String phone) {
 		super(id, fio, phone);
-	}
-
-	public void fromCSV() {
-
 	}
 
     public String toCSV(List<User> users) {
