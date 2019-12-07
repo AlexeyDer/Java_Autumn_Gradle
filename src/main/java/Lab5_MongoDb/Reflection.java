@@ -27,7 +27,7 @@ public class Reflection {
     public void getInfo(Class info) {
         try {
             // Выводим открытые поля
-            System.out.println("Данные о классе - " + info.getName());
+            System.out.println("\nДанные о классе - " + info.getName());
 
             System.out.println("Поля открытого досутпа: ");
             Field[] fields = info.getFields();
@@ -76,6 +76,7 @@ public class Reflection {
         Class infoTeach = Teacher.class;
 
         ref.getInfo(infoStud);
+        ref.getInfo(infoTeach);
 
     }
 }
