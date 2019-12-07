@@ -39,13 +39,17 @@ public class Reflection {
 
             System.out.println("\nРодительский класс: " + info.getSuperclass());
 
+            System.out.println("\nЗакрытые поля родительского класса: ");
+            fields = info.getSuperclass().getDeclaredFields();
+            printFields(fields);
+
             System.out.println("\nМетоды класса: ");
 
             Method[] method = info.getMethods();
             printMethod(method);
 
 
-            System.out.println("Конструкторы: ");
+            System.out.println("\nКонструкторы: ");
             Constructor[] constructors = info.getConstructors();
 
             for (Constructor constructor : constructors) {
