@@ -42,7 +42,7 @@ public class App{
             for (int i = 0; i < users.size(); i++){
                 stmt.executeUpdate("INSERT INTO user(id, fio, phone) " +
                         "VALUE(" + users.get(i).getId() + "," +
-                        users.get(i).getFio() + "," +
+                        users.get(i).getFio()+ "," +
                         users.get(i).getPhone() + ");");
             }
 
