@@ -10,7 +10,7 @@ public class MyClass {
     private int number = 2;
     private String name = "default";
 
-        public MyClass(int number, String name) {
+    public MyClass(int number, String name) {
         this.number = number;
         this.name = name;
     }
