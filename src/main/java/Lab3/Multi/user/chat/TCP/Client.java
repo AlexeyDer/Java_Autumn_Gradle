@@ -1,4 +1,4 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,10 +32,15 @@ public class Client {
         in = new Scanner(inStream);
         out = new PrintWriter(outStream);
 
-        printStory(Server.hist.getStorage());
+//        printStory(Server.hist.getStorage());
 
-        new WriteMsg(client, userName);
+
+//        Runnable r =
+//        Thread t = new Thread(r);
+//        t.start();
         new ReadMsg(client);
+        new WriteMsg(client, userName);
+
     }
 
     public static void main(String[] args) throws IOException {

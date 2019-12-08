@@ -1,39 +1,38 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
 
-    private static Socket clientSocket;
     public static History hist = new History();
     public static int PORT = 19000;
     public static LinkedList<MyTread> serverList = new LinkedList<>();
+
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(PORT);
         System.out.println("Сервер запущен!");
 
-        try {
+        ExecutorService threadpool = Executors.newFixedThreadPool(10);
+
             while (true) {
-                Socket client = server.accept();
-
+                Socket client = null;
                 try {
-                    serverList.add(new MyTread(client));
-                } catch (Exception e) {
+                    client = server.accept();
+                    System.out.println();
+                } catch (IOException e) {
                     e.printStackTrace();
-                    client.close();
                 }
+                threadpool.submit(new MyTread(client));
+                Runnable r = new MyTread(client);
+                Thread t = new Thread(r);
+                t.start();
             }
-
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            server.close();
-        }
 
     }
 

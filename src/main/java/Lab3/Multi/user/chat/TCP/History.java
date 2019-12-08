@@ -1,4 +1,4 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
 import java.util.ArrayList;
 import java.util.List;

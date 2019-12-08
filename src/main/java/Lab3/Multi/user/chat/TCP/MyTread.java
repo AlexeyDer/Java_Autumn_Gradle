@@ -1,35 +1,39 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class MyTread extends Thread{
+public class MyTread implements Runnable{
     private Socket clientDialog;
     private InputStream inStream;
     private OutputStream outStream;
     private Scanner in;
     private PrintWriter out;
 
+
     public MyTread(Socket client) throws IOException {
         this.clientDialog = client;
 
         inStream = client.getInputStream();
-        outStream =client.getOutputStream();
+        outStream = client.getOutputStream();
         in = new Scanner(inStream);
         out = new PrintWriter(outStream);
-        start();
     }
 
     @Override
     public void run() {
         String word;
         try {
-
             while (!clientDialog.isClosed()) {
 
                 word = in.nextLine();
-                Server.hist.getStorage().add(word);
+                send(word);
+
+//                Server.hist.getStorage().add(word);
                 System.out.println(word);
 
 
@@ -40,9 +44,9 @@ public class MyTread extends Thread{
                     break;
                 }
 
-                for (MyTread vr: Server.serverList) {
-                    vr.send(word);
-                }
+//                for (MyTread vr: Server.serverList) {
+//                    vr.send(word);
+//                }
 
             }
 

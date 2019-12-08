@@ -1,4 +1,4 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
 import java.io.*;
 import java.net.Socket;
@@ -28,15 +28,17 @@ public class WriteMsg extends Thread{
         while (true) {
             String userWord;
             try {
-//                System.out.println("Написать сообщение: ");
+                System.out.println("Написать сообщение: ");
                 userWord = sc.nextLine(); // сообщения с консоли
+
                 if (userWord.equals("quit")) {
                     out.write("quit" + "\n");
                     break; // выходим из цикла если пришло "stop"
-                } else {
-                    out.write(nameUser + " пишет: " +  userWord + "\n"); // отправляем на сервер
-               //     Server.hist.addMsg(nameUser + " пишет: " +  userWord);
                 }
+//                else {
+//                    out.write(nameUser + " пишет: " +  userWord + "\n"); // отправляем на сервер
+//                }
+                out.write(nameUser + " пишет: " + userWord + "\n");
                 out.flush(); // чистим
             } catch (Exception e) {
                 e.printStackTrace();

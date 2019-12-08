@@ -1,4 +1,4 @@
-package Lab3.Multi.user.chat;
+package Lab3.Multi.user.chat.TCP;
 
 import java.io.*;
 import java.net.Socket;
