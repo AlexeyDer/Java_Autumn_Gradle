@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 public class MyTread implements Runnable{
     private Socket clientDialog;
+
     private InputStream inStream;
     private OutputStream outStream;
+
     private Scanner in;
     private PrintWriter out;
 
@@ -31,11 +33,7 @@ public class MyTread implements Runnable{
             while (!clientDialog.isClosed()) {
 
                 word = in.nextLine();
-                send(word);
-
-//                Server.hist.getStorage().add(word);
                 System.out.println(word);
-
 
                 if (word.equalsIgnoreCase("quit")) {
                     System.out.println("Client initialize connections suicide ...");
@@ -44,9 +42,9 @@ public class MyTread implements Runnable{
                     break;
                 }
 
-//                for (MyTread vr: Server.serverList) {
-//                    vr.send(word);
-//                }
+                for (Socket vr: Server.socketsList) {
+                    vr
+                }
 
             }
 

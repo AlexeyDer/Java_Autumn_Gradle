@@ -10,8 +10,15 @@ public class Server {
 
         while (true) {
             DatagramPacket dp = new DatagramPacket(new byte[1024], 1024);
-
             ds.receive(dp);
+
+            String str = dp.getData().toString();
+            str.toUpperCase();
+
+            byte[] data = str.getBytes();
+            DatagramPacket packet = new DatagramPacket(data, data.length, dp.getAddress(), dp.getPort());
+
+
             System.out.println(new String(dp.getData()));
         }
     }
