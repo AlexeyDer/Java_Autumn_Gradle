@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class MyTread implements Runnable{
+public class MyThread implements Runnable {
     private Socket clientDialog;
 
     private InputStream inStream;
@@ -17,7 +17,7 @@ public class MyTread implements Runnable{
     private PrintWriter out;
 
 
-    public MyTread(Socket client) throws IOException {
+    public MyThread(Socket client) throws IOException {
         this.clientDialog = client;
 
         inStream = client.getInputStream();
@@ -29,6 +29,15 @@ public class MyTread implements Runnable{
     @Override
     public void run() {
         String word;
+
+        if (!Server.socketsList.isEmpty()) {
+            var lastElem = Server.socketsList.size() - 1;
+            var histStorage = Server.hist.getStorage();
+
+            for (int i = 0; i < histStorage.size(); i++)
+                Server.socketsList.get(lastElem).send(histStorage.get(i));
+        }
+
         try {
             while (!clientDialog.isClosed()) {
 
@@ -42,9 +51,10 @@ public class MyTread implements Runnable{
                     break;
                 }
 
-                for (Socket vr: Server.socketsList) {
-                    vr
+                for (MyThread vr : Server.socketsList) {
+                    vr.send(word);
                 }
+                Server.hist.addMsg(word);
 
             }
 

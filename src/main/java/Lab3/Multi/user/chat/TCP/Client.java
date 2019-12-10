@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.List;
 import java.util.Scanner;
 
 public class Client {
@@ -32,32 +31,24 @@ public class Client {
         in = new Scanner(inStream);
         out = new PrintWriter(outStream);
 
-//        printStory(Server.hist.getStorage());
 
 
-//        Runnable r =
-//        Thread t = new Thread(r);
-//        t.start();
-        new ReadMsg(client);
-        new WriteMsg(client, userName);
+        Runnable r = new ReadMsg(client);
+        Thread t = new Thread(r);
+
+        Runnable r2 =  new WriteMsg(client, userName);
+        Thread t2 = new Thread(r2);
+
+        t.start();
+        t2.start();
 
     }
 
     public static void main(String[] args) throws IOException {
-        if (!Server.hist.getStorage().isEmpty()) {
-            for (int i = 0; i < Server.hist.getStorage().size(); i++) {
-                System.out.println(Server.hist.getStorage().get(i));
-            }
-        }
-
         Client userObj = new Client();
-
     }
 
-    public void printStory(List<String> hist ){
-        for (int i = 0; i < hist.size(); i++)
-            System.out.println(hist.get(i));
-    }
+
 
     public void setIn(Scanner in) {
         this.in = in;

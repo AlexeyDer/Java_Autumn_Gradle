@@ -19,6 +19,13 @@ public class History {
         }
     }
 
+
+    public void printStory(List<String> hist ){
+        for (int i = 0; i < hist.size(); i++)
+            System.out.println(hist.get(i));
+
+    }
+
     public List<String> getStorage() {
         return storage;
     }

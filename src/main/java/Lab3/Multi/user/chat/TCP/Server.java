@@ -11,8 +11,7 @@ public class Server {
 
     public static History hist = new History();
     public static int PORT = 19000;
-    public static LinkedList<MyTread> serverList = new LinkedList<>();
-
+    public static LinkedList<MyThread> socketsList = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(PORT);
@@ -24,14 +23,13 @@ public class Server {
                 Socket client = null;
                 try {
                     client = server.accept();
-                    System.out.println();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                threadpool.submit(new MyTread(client));
-                Runnable r = new MyTread(client);
-                Thread t = new Thread(r);
-                t.start();
+
+                MyThread newThread = new MyThread(client);
+                threadpool.submit(newThread);
+                socketsList.add(newThread);
             }
 
     }

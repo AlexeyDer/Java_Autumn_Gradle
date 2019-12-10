@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class ReadMsg extends Thread{
+public class ReadMsg implements Runnable{
     private Socket clientDialog;
     private InputStream inStream;
     private OutputStream outStream;
@@ -19,7 +19,6 @@ public class ReadMsg extends Thread{
         outStream = client.getOutputStream();
         in = new Scanner(inStream);
         out = new PrintWriter(outStream);
-        start();
     }
 
     @Override

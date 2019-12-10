@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class WriteMsg extends Thread{
+public class WriteMsg implements Runnable{
     private Socket clientDialog;
     private String nameUser;
     private OutputStream outStream;
@@ -16,7 +16,6 @@ public class WriteMsg extends Thread{
 
         outStream = client.getOutputStream();
         out = new PrintWriter(outStream);
-        start();
     }
 
     @Override
@@ -35,9 +34,7 @@ public class WriteMsg extends Thread{
                     out.write("quit" + "\n");
                     break; // выходим из цикла если пришло "stop"
                 }
-//                else {
-//                    out.write(nameUser + " пишет: " +  userWord + "\n"); // отправляем на сервер
-//                }
+
                 out.write(nameUser + " пишет: " + userWord + "\n");
                 out.flush(); // чистим
             } catch (Exception e) {
