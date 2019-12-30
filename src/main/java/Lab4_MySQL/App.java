@@ -35,11 +35,7 @@ public class App {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/univ",
                     "root", "sport1337");
-
             Statement stmt = conn.createStatement();
-
-//            stmt.executeUpdate("DELETE FROM user WHERE id = 2;");
-//            stmt.executeUpdate("INSERT INTO user(id, fio, phone) VALUE(3, 'T', '123')");
 
             stmt.executeUpdate("DELETE FROM user");
 
@@ -59,14 +55,11 @@ public class App {
             }
 
             app.print(users);
-
             users.clear();
-
-
+            
             ////////////////////////////////////////////////////////////////////////
             //////////**** Из БД в CSV ****/////////
 
-//            stmt.executeUpdate("DELETE FROM user");
             users = new ArrayList<>();
 
             // Считываем таблицу
