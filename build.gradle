@@ -4,7 +4,9 @@ apply plugin: 'idea'
 
 repositories {
     jcenter();
+    mavenCentral();
 }
+
 
 dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
@@ -14,5 +16,5 @@ dependencies {
 
 run {
     standardInput = System.in
-    mainClassName = "Lab4_MySQL/App"
+    mainClassName = "Lab6_GC/App"
 }
