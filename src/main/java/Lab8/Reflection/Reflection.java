@@ -1,4 +1,4 @@
-package Lab5_MongoDb;
+package Lab8.Reflection;
 
 import Lab1_CSV.Student;
 import Lab1_CSV.Teacher;

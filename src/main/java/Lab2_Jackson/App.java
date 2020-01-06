@@ -6,6 +6,5 @@ public class App {
         User us = new User();
         us.toJSON();
         us.fromJSON("JSON.json");
-
     }
 }

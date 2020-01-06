@@ -8,6 +8,7 @@ import com.mongodb.client.model.Updates;
 import org.bson.Document;
 
 public class Main {
+
     public static void main(String[] args) {
         MongoClient mClient = new MongoClient("localhost", 27017);
         MongoDatabase db = mClient.getDatabase("univ");

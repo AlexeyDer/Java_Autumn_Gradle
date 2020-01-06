@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class User implements JSON {
@@ -57,7 +55,6 @@ public class User implements JSON {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return "newJson.json";
     }
